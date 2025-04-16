@@ -16,7 +16,6 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $request ->validate([
-            "order_id"=> "required",
             "order_name"=> "required",
             "customer_name"=> "required",
             "total_amount"=> "required",
@@ -44,7 +43,6 @@ class OrderController extends Controller
         }
 
         $request ->validate([
-            'order_id'=> 'required',
             'order_name'=> 'required',
             'customer_name'=> 'required',
             'total_amount'=> 'required',
