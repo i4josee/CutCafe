@@ -9,20 +9,24 @@ class OrderController extends Controller
 {
  public function index()
     {
-        $orders = Order::orderBy("created_at","desc")->paginate(10);
-        return response()->json($orders);
+        $order = Order::orderBy("created_at","desc");
+        return response()->json($order);
     }
 
     public function store(Request $request)
     {
         $request ->validate([
-            "order_name"=> "required",
+            "order_date"=> "nullable",
             "customer_name"=> "required",
             "total_amount"=> "required",
         ]);
 
         $order = Order::create($request->all());
-        return response()->json($order);
+        return response()->json([
+            'success' => true,
+            'message' => 'Order created successfully',
+            'data' => $order
+        ], 201);
     }
 
     public function show($id)
@@ -43,7 +47,7 @@ class OrderController extends Controller
         }
 
         $request ->validate([
-            'order_name'=> 'required',
+            'order_date'=> 'required',
             'customer_name'=> 'required',
             'total_amount'=> 'required',
         ]);

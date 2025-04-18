@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CategoryController;
 
@@ -20,4 +21,10 @@ Route::post('/create/category', [CategoryController::class, 'store']);
 Route::get('/category/{id}', [CategoryController::class, 'show']);
 Route::put('/update/category/{id}', [CategoryController::class, 'update']);
 Route::delete('/delete/category/{id}', [CategoryController::class, 'destroy']);
+
+Route::get('/menus', [MenuController::class,'index']);
+Route::post('/create/menu', [MenuController::class, 'store']);
+Route::get('/menu/{id}', [MenuController::class, 'show']);
+Route::put('/update/menu/{id}', [MenuController::class, 'update']);
+Route::delete('/delete/menu/{id}', [MenuController::class, 'destroy']);
 
